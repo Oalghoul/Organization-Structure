@@ -1,0 +1,45 @@
+﻿<Page x:Class="OrganizationStructureService.Views.ManageRolesView"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:OrganizationStructureService.Views"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="Manage Roles">
+
+    <Grid>
+
+        <ListView Grid.Row="1" ItemsSource="{Binding ListRole}">
+
+            <ListView.View>
+                <GridView>
+                    <GridView.Columns>
+                        <GridViewColumn Header="Role ID" DisplayMemberBinding="{Binding role_id}"></GridViewColumn>
+                        <GridViewColumn Header="Role Name" DisplayMemberBinding="{Binding role_name}"></GridViewColumn>
+                        <GridViewColumn Header="Edit">
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <Button Name="EditBtn" Content="Edit" ></Button>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                        <GridViewColumn Header="Delete">
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <Button 
+                                        Name="DeleteBtn" Content="Delete"  
+                                        Command="{Binding DataContex.DeleteCommand,RelativeSource={RelativeSource AncestorType={x:Type ListView}}}"
+                                        CommandParameter="{Binding}"
+                                        />
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                    </GridView.Columns>
+                </GridView>
+            </ListView.View>
+        </ListView>
+
+
+    </Grid>
+</Page>
